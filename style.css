@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+
+  --purple: hsl(259, 100%, 65%);
+  --lightred: hsl(0, 100%, 67%);
+  --white: hsl(0, 0%, 100%);
+  --offwhite: hsl(0, 0%, 94%);
+  --lightgrey: hsl(0, 0%, 86%);
+  --smokeygrey: hsl(0, 1%, 44%);
+  --offblack: hsl(0, 0%, 8%);
+
+  color-scheme: light;
+  color: var(--offblack);
+  background-color: var(--offwhite);
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.container {
+  box-sizing: border-box;
+  background-color: var(--white);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 200px;
+  border-bottom-left-radius: 20px;
+  padding: 56px;
+  width: 840px;
+}
+.container > .fields {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+.container > .fields > div:has(input) label {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+.container > .fields > div > input {
+  box-sizing: border-box;
+  font-size: .875rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  width: 160px;
+  height: 70px;
+  border: 1px solid;
+  border-color: var(--lightgrey);
+  border-radius: 10px;
+  padding: 16px;
+  margin-right: 20px;
+}
+.container > .fields > div > input::placeholder {
+  color: var(--smokeygrey);
+}
+.container > .fields > div > input:focus {
+  border: 1px solid;
+  border-color: var(--purple);
+}
+.container > .fields > div > label {
+  font-size: .425rem;
+  font-weight: 700;
+  color: var(--smokeygrey);
+  margin: 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.container button {
+  width: 96px;
+  height: 96px;
+  border: none;
+  border-radius: 1000px;
+  background-color: var(--offblack);
+}
