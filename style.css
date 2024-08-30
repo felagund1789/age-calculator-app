@@ -42,7 +42,7 @@ body {
 .container > .fields {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
   justify-content: start;
 }
 .container > .fields > div:has(input) label {
@@ -50,6 +50,9 @@ body {
   flex-direction: column;
   align-items: start;
   justify-content: start;
+}
+.container > .fields > div.error:has(input) label {
+  color: var(--lightred);
 }
 .container > .fields > div > input {
   font-family: Poppins, Arial, Helvetica, sans-serif;
@@ -64,6 +67,11 @@ body {
   border-radius: 10px;
   padding: 16px;
   margin-right: 32px;
+}
+.container > .fields > div.error > input,
+.container > .fields > div.error > input:hover,
+.container > .fields > div.error > input:focus {
+  border-color: var(--lightred);
 }
 .container > .fields > div > input::placeholder {
   color: var(--smokeygrey);
@@ -81,6 +89,12 @@ body {
   margin: 5px 0;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+.container > .fields > div > p {
+  font-size: .425rem;
+  font-style: italic;
+  color: var(--lightred);
+  margin-top: 5px;
 }
 .container > .button {
   display: flex;
@@ -104,8 +118,11 @@ body {
   background-repeat: no-repeat;
   cursor: pointer;
 }
+.container > .button > button:focus,
 .container > .button > button:hover {
   background-color: var(--offblack);
+  outline: none;
+  border: none;
 }
 .container > .result > p {
   color: var(--offblack);
