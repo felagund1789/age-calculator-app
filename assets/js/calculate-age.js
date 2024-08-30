@@ -12,11 +12,22 @@ const days = document.getElementById("days");
 const months = document.getElementById("months");
 const years = document.getElementById("years");
 
+const re = new RegExp(/[0-9]+/);
+const isNumeric = (n) => {
+  return re.test(n) && !isNaN(parseInt(n));
+}
+
 const validateDay = () => {
   const day = day_input.value;
   if (!day) {
     day_div.classList.add("error");
     day_error.innerHTML = "This field is required";
+    return false;
+  }
+  const d = parseInt(day);
+  if (!isNumeric(d) || d < 1) {
+    day_div.classList.add("error");
+    day_error.innerHTML = "Must be a valid day";
     return false;
   }
   day_div.classList.remove("error");
@@ -30,6 +41,12 @@ const validateMonth = () => {
     month_error.innerHTML = "This field is required";
     return false;
   }
+  const m = parseInt(month);
+  if (!isNumeric(m) || m < 1 || m > 12) {
+    month_div.classList.add("error");
+    month_error.innerHTML = "Must be a valid month";
+    return false;
+  }
   month_div.classList.remove("error");
   month_error.innerHTML = "";
   return true;
@@ -41,6 +58,17 @@ const validateYear = () => {
     year_error.innerHTML = "This field is required";
     return false;
   }
+  const y = parseInt(year);
+  if (!isNumeric(y)) {
+    year_div.classList.add("error");
+    year_error.innerHTML = "Must be a valid year";
+    return false;
+  }
+  if (y > new Date().getFullYear()) {
+    year_div.classList.add("error");
+    year_error.innerHTML = "Must be in the past";
+    return false;
+  }
   year_div.classList.remove("error");
   year_error.innerHTML = "";
   return true;
@@ -48,10 +76,17 @@ const validateYear = () => {
 
 const calculateAge = () => {
   const now = new Date();
-  const dob = new Date();
-  dob.setDate(parseInt(day_input.value));
-  dob.setMonth(parseInt(month_input.value) - 1);
-  dob.setYear(parseInt(year_input.value));
+  const day = parseInt(day_input.value);
+  const month = parseInt(month_input.value);
+  const year = parseInt(year_input.value);
+  const dob = new Date(year, month - 1, day);
+  if (day !== dob.getDate() || month !== dob.getMonth() + 1 || year !== dob.getFullYear()) {
+    day_div.classList.add("error");
+    day_error.innerHTML = "Must be a valid date";
+    month_div.classList.add("error");
+    year_div.classList.add("error");
+    return;
+  }
 
   let diffYears = now.getFullYear() - dob.getFullYear();
   let diffMonths = now.getMonth() - dob.getMonth();
@@ -74,7 +109,8 @@ const calculateAge = () => {
 day_input.onblur = validateDay;
 month_input.onblur = validateMonth;
 year_input.onblur = validateYear;
-button.onclick = () => {
+
+const handleButtonClick = () => {
   const dayIsValid = validateDay();
   const monthIsValid = validateMonth();
   const yearIsValid = validateYear()
@@ -82,3 +118,14 @@ button.onclick = () => {
     calculateAge();
   }
 }
+
+const handleEnter = (event) => {
+  if (event && event.keyCode === 13) {
+    handleButtonClick();
+  }
+}
+
+day_input.onkeydown = handleEnter;
+month_input.onkeydown = handleEnter;
+year_input.onkeydown = handleEnter;
+button.onclick = handleButtonClick;
