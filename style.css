@@ -29,6 +29,7 @@ body {
   align-items: center;
 }
 .container {
+  margin: 2rem 0;
   box-sizing: border-box;
   background-color: var(--white);
   border-top-left-radius: 20px;
@@ -51,9 +52,10 @@ body {
   justify-content: start;
 }
 .container > .fields > div > input {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   font-size: .875rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 2px;
   width: 160px;
   height: 70px;
@@ -61,14 +63,16 @@ body {
   border-color: var(--lightgrey);
   border-radius: 10px;
   padding: 16px;
-  margin-right: 20px;
+  margin-right: 32px;
 }
 .container > .fields > div > input::placeholder {
   color: var(--smokeygrey);
 }
+.container > .fields > div > input:hover,
 .container > .fields > div > input:focus {
   border: 1px solid;
   border-color: var(--purple);
+  outline: none;
 }
 .container > .fields > div > label {
   font-size: .425rem;
@@ -78,10 +82,40 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-.container button {
+.container > .button {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+.container > .button > hr {
+  width: calc(100% - 96px - 1px);
+  border-color: var(--lightgrey);
+  border-style: solid;
+}
+.container > .button > button {
   width: 96px;
   height: 96px;
   border: none;
   border-radius: 1000px;
+  background-color: var(--purple);
+  background-image: url("assets/images/icon-arrow.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.container > .button > button:hover {
   background-color: var(--offblack);
+}
+.container > .result > p {
+  color: var(--offblack);
+  font-size: 3.25rem;
+  font-style: italic;
+  font-weight: 800;
+  padding: 0px;
+  margin: -1rem 0;
+}
+.container > .result > p > span.digits {
+  color: var(--purple);
+  letter-spacing: 10px;
 }
