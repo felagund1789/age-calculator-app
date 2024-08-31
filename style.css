@@ -110,7 +110,6 @@ body {
   font-style: italic;
   color: var(--lightred);
   margin-top: 5px;
-  text-wrap: nowrap;
 }
 .container > .button {
   display: flex;

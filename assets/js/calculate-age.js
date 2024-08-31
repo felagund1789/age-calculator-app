@@ -92,13 +92,12 @@ const calculateAge = () => {
   let diffMonths = now.getMonth() - dob.getMonth();
   if (diffMonths < 0) {
     diffYears--;
-    diffMonths += 12;
+    diffMonths+=12;
   }
   let diffDays = now.getDate() - dob.getDate();
   if (diffDays < 0) {
     diffMonths--;
-    now.setMonth(now.getMonth() + 1);
-    diffDays = now.getDate() - dob.getDate();
+    diffDays+=30;
   }
   
   years.innerHTML = diffYears;
