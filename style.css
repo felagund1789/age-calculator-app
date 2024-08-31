@@ -22,28 +22,35 @@
   padding: 0;
 }
 body {
-  min-height: 40rem;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  overflow: scroll;
 }
 .container {
-  margin: 4rem 0;
   box-sizing: border-box;
   background-color: var(--white);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border-bottom-right-radius: 200px;
+  border-bottom-right-radius: 100px;
   border-bottom-left-radius: 20px;
-  padding: 3.5rem;
-  width: 52.5rem;
+  padding: 1.75rem;
+  width: min(90vw, 52.5rem);
+}
+@media(min-width:640px) {
+  .container {
+    padding: 3.5rem;
+    border-bottom-right-radius: 200px;
+  }
 }
 .container > .fields {
   display: flex;
   flex-direction: row;
   align-items: start;
   justify-content: start;
+  gap: 1rem;
 }
 .container > .fields > div:has(input) label {
   display: flex;
@@ -57,16 +64,24 @@ body {
 .container > .fields > div > input {
   font-family: Poppins, Arial, Helvetica, sans-serif;
   box-sizing: border-box;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: 0.125rem;
-  width: 10rem;
-  height: 4.375rem;
+  letter-spacing: 0.0625rem;
+  width: 5rem;
   border: 1px solid;
   border-color: var(--lightgrey);
-  border-radius: 10px;
-  padding: 1rem;
-  margin-right: 2rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-right: 5px;
+}
+@media(min-width: 640px) {
+  .container > .fields > div > input {
+    font-size: 1.75rem;
+    letter-spacing: 0.125rem;
+    width: 10rem;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
 }
 .container > .fields > div.error > input,
 .container > .fields > div.error > input:hover,
@@ -95,28 +110,49 @@ body {
   font-style: italic;
   color: var(--lightred);
   margin-top: 5px;
+  text-wrap: nowrap;
 }
 .container > .button {
   display: flex;
   flex-direction: row;
-  justify-content: end;
   align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+@media(min-width: 640px) {
+  .container > .button {
+    justify-content: end;
+    margin: 0;
+  }
 }
 .container > .button > hr {
-  width: calc(100% - 96px - 1px);
+  width: calc(50% - 2rem - 1px);
   border-color: var(--lightgrey);
   border-style: solid;
 }
 .container > .button > button {
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   border: none;
   border-radius: 1000px;
   background-color: var(--purple);
   background-image: url("assets/images/icon-arrow.svg");
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: 50% 50%;
   cursor: pointer;
+}
+@media(min-width: 640px) {
+  .container > .button > hr.left {
+    width: calc(100% - 6rem - 1px);
+  }
+  .container > .button > hr.right {
+    width: 0px;
+  }
+  .container > .button > button {
+    width: 6rem;
+    height: 6rem;
+  }  
 }
 .container > .button > button:focus,
 .container > .button > button:hover {
@@ -124,13 +160,26 @@ body {
   outline: none;
   border: none;
 }
+.container > .result {
+  margin-bottom: 2rem;
+}
 .container > .result > p {
   color: var(--offblack);
-  font-size: 6.5rem;
+  font-size: 3.25rem;
   font-style: italic;
   font-weight: 800;
   padding: 0px;
-  margin: -2rem 0;
+  margin: -1rem 0;
+  text-wrap: nowrap;
+}
+@media(min-width: 640px) {
+  .container > .result {
+    margin-bottom: 4rem;
+  }
+  .container > .result > p {
+    font-size: 6.5rem;
+    margin: -2rem 0;
+  }
 }
 .container > .result > p > span.digits {
   color: var(--purple);
