@@ -173,7 +173,7 @@ body {
 }
 @media(min-width: 640px) {
   .container > .result {
-    margin-bottom: 4rem;
+    margin-bottom: 0;
   }
   .container > .result > p {
     font-size: 6.5rem;

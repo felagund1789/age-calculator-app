@@ -11,6 +11,9 @@ const year_error = document.getElementById("year-error");
 const days = document.getElementById("days");
 const months = document.getElementById("months");
 const years = document.getElementById("years");
+const days_text = document.getElementById("days-text");
+const months_text = document.getElementById("months-text");
+const years_text = document.getElementById("years-text");
 
 const re = new RegExp(/[0-9]+/);
 const isNumeric = (n) => {
@@ -103,6 +106,9 @@ const calculateAge = () => {
   years.innerHTML = diffYears;
   months.innerHTML = diffMonths;
   days.innerHTML = diffDays;
+  years_text.innerHTML = diffYears === 1 ? "year" : "years";
+  months_text.innerHTML = diffMonths === 1 ? "month" : "months";
+  days_text.innerHTML = diffDays === 1 ? "day" : "days";
 }
 
 day_input.onblur = validateDay;
